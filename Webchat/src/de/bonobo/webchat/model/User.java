@@ -22,7 +22,7 @@ import org.hibernate.annotations.Entity;
 	private Set<Chatroom> favoriteChatrooms;
 	public User() {
 	}
-	
+	//Konstruktor
 	public User(String username) {
 		this.username = username;
 	}
