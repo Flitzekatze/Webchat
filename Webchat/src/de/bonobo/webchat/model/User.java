@@ -1,85 +1,111 @@
 package de.bonobo.webchat.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDataFormat;
 import java.sql.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Entity;
+import javax.persistence.Table;
 
 
 
 @Entity
-	public class User {
+@Table(name ="User")
+public class User 
+{
 	private Integer id;
 	private String username;
 	private Date dateOfBirth;
 	private String gender;
 	private String userPicture;
 	private Set<Chatroom> favoriteChatrooms;
-	public User() {
+	
+    public User() 
+    {
+        
 	}
-	//Konstruktor
-	public User(String username) {
+	
+    //Konstruktor
+	public User(String username) 
+    {
 		this.username = username;
 	}
+    
 	@Id
+	@Column(name="User_ID")
 	@GeneratedValue
 	public Integer getId() {
 	return this.id;
 	}
 	
-	protected void setId(Integer id) {
-	this.id = id;
+	protected void setId(Integer id) 
+    {
+        this.id = id;
 	}
 	
-	public String getUsername() {
-	return this.username;
+	@Column(name="Username")
+	public String getUsername() 
+    {
+        return this.username;
 	}
 	
-	public void setName(String username) {
-	this.username = username;
+	public void setName(String username) 
+    {
+        this.username = username;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	@Column(name="DateOfBirth")
+	public String getDateOfBirth() 
+    {
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		return df.format(dateOfBirth);
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirth(String dateOfBirth) throws ParseException
+    {
+        DateFormat df = new SimpleDateFormat("dd:MM.yyyy");
+		this.dateOfBirth = df.parse(dateOfBirth);
 	}
 
-	public String getGender() {
+	@Column(name="Gender")
+	public String getGender() 
+    {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(String gender) 
+    {
 		this.gender = gender;
 	}
 
-	public String getUserPicture() {
+	@Column(name="UserPicture")
+	public String getUserPicture() 
+    {
 		return userPicture;
 	}
 
-	public void setUserPicture(String userPicture) {
+	public void setUserPicture(String userPicture) 
+    {
 		this.userPicture = userPicture;
 	}
-	@ManyToMany
-	public Set<Chatroom> getFavoriteChatrooms() {
-	return this.favoriteChatrooms;
+    
+	//@ManyToMany(fetch=FetchType.EAGER, mappedBy="activeUsers")
+	public Set<Chatroom> getFavoriteChatrooms() 
+    {
+        return this.favoriteChatrooms;
 	}
-	protected void setFavoriteChatrooms(Set<Chatroom> favoriteChatrooms) {
-	this.favoriteChatrooms = favoriteChatrooms;
+	protected void setFavoriteChatrooms(Set<Chatroom> favoriteChatrooms) 
+    {
+        this.favoriteChatrooms = favoriteChatrooms;
 	}
-	
-	public void addFavoriteChatroom(Chatroom favoriteChatroom) {
-	this.favoriteChatrooms.add(favoriteChatroom);
-	}
-	
-	public void removefavoriteChatroom(Chatroom favoriteChatroom) {
-	this.favoriteChatrooms.remove(favoriteChatroom);
-	}
+
 }
