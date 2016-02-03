@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<context:component-scan base-package="de.bonobo.webchat.web" />
+	<context:annotation-config />
+	<bean id="viewResolver"   
+           class="org.springframework.web.servlet.view.InternalResourceViewResolver"    
+           p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" 
+    />         
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver"/>
+        <property name="url" value="jdbc:hsqldb:hsql://localhost//"/>
+        <property name="username" value="SA"/>
+        <property name="password" value=""/>
+    </bean>
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>de.bonobo.webchat.model.User</value>
+                <value>de.bonobo.webchat.model.Chatroom</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="myUserDAO" class="de.bonobo.webchat.dao.UserDAOImpl">
+        <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+    <bean id="myChatroomDAO" class="de.bonobo.webchat.dao.ChatroomDAOImpl">
+        <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven/>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>	
+           
+</beans>
