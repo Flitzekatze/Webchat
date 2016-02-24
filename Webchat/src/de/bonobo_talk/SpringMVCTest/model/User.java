@@ -1,133 +1,119 @@
 package de.bonobo_talk.SpringMVCTest.model;
 
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
+import java.math.BigDecimal;
+ 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+ 
+import org.hibernate.validator.constraints.NotEmpty;
+ 
 @Entity
-@Table(name ="UserTable")
-public class User 
-{
-	private Integer id;
-	private String firstname;
-	private String lastname; 
-	private Date dateOfBirth;
-	private String gender;
-	private String userPicture;
-	private Set<Chatroom> favouriteChatrooms;
-	
-	public User() 
-	{
-		
+@Table(name="USER")
+public class User {
+ 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    @Size(min=3, max=50)
+    @Column(name = "FIRSTNAME", nullable = false)
+    private String firstname;
+    
+    @Size(min=3, max=50)
+    @Column(name = "LASTNAME", nullable = false)
+    private String lastname;
+    
+    @Size(min=3, max=50)
+    @Column(name = "DATEOFBIRTH", nullable = false)
+    private String dateOfBirth;
+    
+    
+    @Column(name = "GENDER", nullable = false)
+    private String gender;
+    
+    @NotNull
+    @Size(min=3, max=50)
+    @Column(name = "USERPICTURE", nullable = false)
+    private String userpicture;
+    
+    @NotNull
+    @Size(min=3, max=50)
+    @Column(name = "FAVORITECHATROOMS", nullable = false)
+    private String favoriteChatrooms;
+     
+ 
+    public int getId() {
+        return id;
+    }
+ 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+ 
+    public String getFirstname() {
+		return firstname;
 	}
-	
-	@Id
-	@GeneratedValue
-	@Column(name="UserID")
-	public Integer getId() 
-	{
-		return this.id;
-	}
-	
-	public void setId(Integer id) 
-	{
-		this.id = id;
-	}
-	
-	@Column(name="Firstname")
-	public String getFirstname() 
-	{
-		return this.firstname;
-	}
-	
-	public void setFirstname(String firstname) 
-	{
+
+	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	
-	@Column(name="Lastname")
-	public String getLastname() 
-	{
-		return this.lastname;
+
+	public String getLastname() {
+		return lastname;
 	}
-	
-	public void setLastname(String lastname) 
-	{
+
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	
-	@Column(name="DateOfBirth")
-	public String getDateOfBirth() 
-	{
-		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-		return df.format(dateOfBirth);
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
 	}
-	
-	public void setDateOfBirth(String dateOfBirth) throws ParseException
-	{
-		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-		this.dateOfBirth = df.parse(dateOfBirth);
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
-	
-	@Column(name="Gender")
-	public String getGender() 
-	{
+
+	public String getGender() {
 		return gender;
 	}
-	
-	public void setGender(String gender) 
-	{
+
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	@Column(name="UserPicture")
-	public String getUserPicture() 
-	{
-		return userPicture;
+
+	public String getUserpicture() {
+		return userpicture;
 	}
-	
-	public void setUserPicture(String userPicture) 
-	{
-		this.userPicture = userPicture;
+
+	public void setUserpicture(String userpicture) {
+		this.userpicture = userpicture;
 	}
-	
-	@ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinTable(	name="User_Chatroom",
-				joinColumns={@JoinColumn(name="User_ID")},
-				inverseJoinColumns={@JoinColumn(name="Chatroom_ID")}
-	)	
-	public Set<Chatroom> getFavouriteChatrooms() 
-	{
-		return this.favouriteChatrooms;
+
+	public String getFavoriteChatrooms() {
+		return favoriteChatrooms;
 	}
-	
-	protected void setFavouriteChatrooms(Set<Chatroom> favouriteChatrooms) 
-	{
-		this.favouriteChatrooms = favouriteChatrooms;
+
+	public void setFavoriteChatrooms(String favoriteChatrooms) {
+		this.favoriteChatrooms = favoriteChatrooms;
 	}
-	
-	public void addFavouriteChatroom(Chatroom chatroom)
-	{
-		this.favouriteChatrooms.add(chatroom);
-	}
-	
-	public void removeFavouriteChatroom(Chatroom chatroom)
-	{
-		this.favouriteChatrooms.remove(chatroom);
-	}
-	
+
+ 
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", firstname=" + firstname + ", lastname="
+                + lastname + " , gender=" + gender + ", dateOfBirth="
+                + dateOfBirth + ", userpicture="
+                + userpicture + ", favoriteChatrooms="
+                + favoriteChatrooms + ", gender=" + gender + "]";
+    }
+     
 }
+
