@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {	
+	background-color: rgba(233,242,214,1);
+}
+
+div#content{
+	background-color: #FCFCFC;	
+}
+
+div#navContainer{
+	background-color: darkslateblue;
+}
+
+a.navItem:hover{
+	background-color: slateblue;
+	border-top-color: white;
+}
+
+div#loginContainer>div>a:hover{
+	background-color: #2C3744;
+	border-top-color: white;
+}
+
+div#footer>ul>li>a{
+	color: #002839;
+}
+
+div#popupContainer{
+	background-color: rgba(24,30,37,0.64);
+}
+
+div#popupLogin{
+	background-color: #FFFFFF;
+}
+
+#loginButoons>div{
+	background: none;
+	background-color: #ffffff;
+	color: black;
+}
+
+div.inactiveBtn{
+	background-color: #BCBCBC;
+	color: #8F8F8F;
+}
+
+div#loginInfo{
+	background-color: darkslateblue;
+}
+
+div#navigation{
+	color: #fff;	
+}
+
+div#account:hover{
+	border-top-color: white;
+	background-color: #2C3744;
+}
