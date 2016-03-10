@@ -14,7 +14,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+<<<<<<< HEAD
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+=======
+>>>>>>> origin/development
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -40,7 +43,11 @@ public class HibernateInitializer {
         dataSource.setDriverClassName(environment.getRequiredProperty("driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("url"));
         dataSource.setUsername("root");
+<<<<<<< HEAD
         dataSource.setPassword("123456");
+=======
+        dataSource.setPassword("");
+>>>>>>> origin/development
         return dataSource;
     }
      
@@ -48,7 +55,10 @@ public class HibernateInitializer {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+<<<<<<< HEAD
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+=======
+>>>>>>> origin/development
         return properties;        
     }
      

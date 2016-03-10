@@ -40,10 +40,17 @@ public class AccountDAOImpl extends AbstractDao<Integer, Account> implements Acc
         return (Account) criteria.uniqueResult();
     }
 
+<<<<<<< HEAD
 	@Override
 	public Account findAccountByUsername(String username) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("username", username));
         return (Account) criteria.uniqueResult();
 	}
+=======
+
+
+
+
+>>>>>>> origin/development
 }

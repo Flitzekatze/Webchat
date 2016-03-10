@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cp" value="${pageContext.request.servletContext.contextPath}" scope="request" />
+=======
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+>>>>>>> origin/development
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,6 +30,7 @@
         </tr>
         <c:forEach items="${Accounts}" var="account">
             <tr>
+<<<<<<< HEAD
             
             <td>${account.username}</td>
             <td>${account.password}</td>
@@ -37,6 +44,15 @@
         <a href="<c:url value='/login' />">login</a>
         </td>
         </tr>
+=======
+            <td>${account.username}</td>
+            <td>${account.password}</td>
+            <td>${account.email}</td>
+            <td><a href="<c:url value='/edit-${account.ssn}-account' />">${account.ssn}</a></td>
+            <td><a href="<c:url value='/delete-${account.ssn}-account' />">delete</a></td>
+            </tr>
+        </c:forEach>
+>>>>>>> origin/development
     </table>
     <br/>
     <a href="<c:url value='/new' />">Add New Account</a>

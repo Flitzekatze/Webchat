@@ -10,6 +10,9 @@ public interface AccountDAO {
     void deleteAccountBySsn(String ssn);
     List<Account> getAllAccounts();
     Account findAccountBySsn(String ssn);
+<<<<<<< HEAD
     Account findAccountByUsername(String username);
+=======
+>>>>>>> origin/development
 }
  

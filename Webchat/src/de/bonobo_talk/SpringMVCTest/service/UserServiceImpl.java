@@ -3,15 +3,21 @@ package de.bonobo_talk.SpringMVCTest.service;
 import java.util.List;
 
 
+<<<<<<< HEAD
 
 import java.util.Set;
 
+=======
+>>>>>>> origin/development
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.bonobo_talk.SpringMVCTest.DAO.UserDAO;
+<<<<<<< HEAD
 import de.bonobo_talk.SpringMVCTest.model.Chatroom;
+=======
+>>>>>>> origin/development
 import de.bonobo_talk.SpringMVCTest.model.User;
  
  
@@ -38,7 +44,11 @@ public class UserServiceImpl implements UserService {
         	entity.setGender(User.getGender());
         	entity.setDateOfBirth(User.getDateOfBirth());
         	entity.setUserpicture(User.getUserpicture());
+<<<<<<< HEAD
         	entity.setFavouriteChatrooms(User.getFavouriteChatrooms());
+=======
+        	entity.setFavoriteChatrooms(User.getFavoriteChatrooms());
+>>>>>>> origin/development
         }
     }
  
@@ -55,6 +65,7 @@ public class UserServiceImpl implements UserService {
     public User findUserByUsername(String username) {
     	return dao.findUserByUsername(username);
     }
+<<<<<<< HEAD
 
 	@Override
 	public void addFavouriteChatroom(int userID, Chatroom chatroom) {
@@ -101,4 +112,11 @@ public class UserServiceImpl implements UserService {
         }
 	}
 	
+=======
+ 
+
+
+
+     
+>>>>>>> origin/development
 }

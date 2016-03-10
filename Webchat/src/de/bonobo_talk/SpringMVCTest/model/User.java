@@ -2,6 +2,7 @@ package de.bonobo_talk.SpringMVCTest.model;
 
 import java.math.BigDecimal;
  
+<<<<<<< HEAD
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,14 +15,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+=======
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+>>>>>>> origin/development
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
  
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> origin/development
 import org.hibernate.validator.constraints.NotEmpty;
  
 @Entity
@@ -29,7 +40,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class User {
  
     @Id
+<<<<<<< HEAD
     @Column(name = "USER_ID")
+=======
+>>>>>>> origin/development
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
@@ -54,6 +68,7 @@ public class User {
     @Column(name = "USERPICTURE", nullable = false)
     private String userpicture;
     
+<<<<<<< HEAD
     
     @ManyToMany(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
    	@JoinTable(name = "JOINEDCHATROOMS", joinColumns = { 
@@ -74,6 +89,12 @@ public class User {
     {
     	
     }
+=======
+    @NotNull
+    @Size(min=3, max=50)
+    @Column(name = "FAVORITECHATROOMS", nullable = false)
+    private String favoriteChatrooms;
+>>>>>>> origin/development
      
  
     public int getId() {
@@ -125,6 +146,7 @@ public class User {
 		this.userpicture = userpicture;
 	}
 
+<<<<<<< HEAD
  
     public Set<Chatroom> getJoinedChatrooms() {
 		return joinedChatrooms;
@@ -147,12 +169,28 @@ public class User {
 
 
 	@Override
+=======
+	public String getFavoriteChatrooms() {
+		return favoriteChatrooms;
+	}
+
+	public void setFavoriteChatrooms(String favoriteChatrooms) {
+		this.favoriteChatrooms = favoriteChatrooms;
+	}
+
+ 
+    @Override
+>>>>>>> origin/development
     public String toString() {
         return "User [id=" + id + ", firstname=" + firstname + ", lastname="
                 + lastname + " , gender=" + gender + ", dateOfBirth="
                 + dateOfBirth + ", userpicture="
                 + userpicture + ", favoriteChatrooms="
+<<<<<<< HEAD
                 + favouriteChatrooms.toString() + ", gender=" + gender + "]";
+=======
+                + favoriteChatrooms + ", gender=" + gender + "]";
+>>>>>>> origin/development
     }
      
 }

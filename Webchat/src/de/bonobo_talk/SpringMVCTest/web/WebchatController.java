@@ -1,5 +1,6 @@
 package de.bonobo_talk.SpringMVCTest.web;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -8,6 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.hibernate.mapping.Map;
+=======
+import java.util.List;
+import java.util.Locale;
+
+import javax.validation.Valid;
+
+>>>>>>> origin/development
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -18,7 +26,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
 import org.springframework.web.portlet.ModelAndView;
+=======
+>>>>>>> origin/development
 
 import de.bonobo_talk.SpringMVCTest.model.Account;
 import de.bonobo_talk.SpringMVCTest.service.AccountService;
@@ -32,6 +43,7 @@ public class WebchatController
 		    @Autowired
 		    MessageSource messageSource;
 		 
+<<<<<<< HEAD
 		    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 		    public String showStartsite(ModelMap model) {
 		 
@@ -41,12 +53,17 @@ public class WebchatController
 		    }
 
 		    @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
+=======
+
+		    @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+>>>>>>> origin/development
 		    public String listAccounts(ModelMap model) {
 		 
 		        List<Account> Accounts = service.getAllAccounts();
 		        model.addAttribute("Accounts", Accounts);
 		        return "allAccounts";
 		    }
+<<<<<<< HEAD
 		    
 
 		    @RequestMapping(value = { "/footer" })
@@ -68,6 +85,8 @@ public class WebchatController
 		        return "popuplogin";
 		    }
 
+=======
+>>>>>>> origin/development
 		 
 		    
 		    @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
@@ -99,6 +118,11 @@ public class WebchatController
 		        return "success";
 		    }
 		 
+<<<<<<< HEAD
+=======
+		 
+
+>>>>>>> origin/development
 		    @RequestMapping(value = { "/edit-{ssn}-Account" }, method = RequestMethod.GET)
 		    public String editAccount(@PathVariable String ssn, ModelMap model) {
 		        Account Account = service.findAccountBySsn(ssn);
@@ -134,5 +158,8 @@ public class WebchatController
 		        service.deleteAccountBySsn(ssn);
 		        return "redirect:/list";
 		    }
+<<<<<<< HEAD
 		    		 
+=======
+>>>>>>> origin/development
 }

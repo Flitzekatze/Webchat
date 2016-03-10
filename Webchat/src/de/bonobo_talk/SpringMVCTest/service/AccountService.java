@@ -12,7 +12,12 @@ public interface AccountService {
     void deleteAccountBySsn(String ssn); 
     List<Account> getAllAccounts(); 
     Account findAccountBySsn(String ssn);
+<<<<<<< HEAD
     Account findAccountByUsername(String username);
     boolean isAccountSsnUnique(Integer id, String ssn);
     boolean checkLogin(String username, String password);
+=======
+    boolean isAccountSsnUnique(Integer id, String ssn);
+     
+>>>>>>> origin/development
 }

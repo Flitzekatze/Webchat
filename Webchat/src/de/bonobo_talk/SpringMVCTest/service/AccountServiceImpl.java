@@ -2,7 +2,10 @@ package de.bonobo_talk.SpringMVCTest.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+=======
+>>>>>>> origin/development
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +35,10 @@ public class AccountServiceImpl implements AccountService {
             entity.setPassword(Account.getPassword());
             entity.setEmail(Account.getEmail());
             entity.setSsn(Account.getSsn());
+<<<<<<< HEAD
             entity.setAccountRoles(Account.getAccountRoles());
+=======
+>>>>>>> origin/development
         }
     }
  
@@ -53,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
         return ( Account == null || ((id != null) && (Account.getId() == id)));
     }
 
+<<<<<<< HEAD
     public boolean checkLogin(String username, String password)
     {
     	//LocalSessionFactoryBuilder localSession = new LocalSessionFactoryBuilder();
@@ -78,6 +85,8 @@ public class AccountServiceImpl implements AccountService {
 	public Account findAccountByUsername(String username) {
 		return dao.findAccountByUsername(username);
 	}
+=======
+>>>>>>> origin/development
 
      
 }

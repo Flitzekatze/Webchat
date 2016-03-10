@@ -1,6 +1,7 @@
 package de.bonobo_talk.SpringMVCTest.model;
 
 import java.math.BigDecimal;
+<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,12 +16,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+=======
+ 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+>>>>>>> origin/development
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
  
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/development
 import org.hibernate.validator.constraints.NotEmpty;
  
 @Entity
@@ -46,6 +58,7 @@ public class Account {
     @NotEmpty
     @Column(name = "SSN", unique=true, nullable = false)
     private String ssn;
+<<<<<<< HEAD
     
     @NotEmpty
     @Column(name = "STATE", nullable = false)
@@ -81,6 +94,14 @@ public class Account {
 	}
 
 	public void setId(int id) {
+=======
+ 
+    public int getId() {
+        return id;
+    }
+ 
+    public void setId(int id) {
+>>>>>>> origin/development
         this.id = id;
     }
     public String getUsername() {
@@ -114,6 +135,7 @@ public class Account {
         this.ssn = ssn;
     }
  
+<<<<<<< HEAD
     public User getUser() {
 		return user;
 	}
@@ -123,6 +145,9 @@ public class Account {
 	}
 
 	@Override
+=======
+    @Override
+>>>>>>> origin/development
     public int hashCode() {
         final int prime = 31;
         int result = 1;
